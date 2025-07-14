@@ -2,12 +2,12 @@
   "name": "chatting-app",
   "version": "1.0.0",
   "main": "index.js",
- "scripts": {
-  "dev": "nodemon backend/src/server.js",
-  "start": "node backend/src/server.js",
-  "build": "npm install --prefix frontend && npm run build --prefix frontend",
-  "dev:all": "concurrently \"npm run dev\" \"npm run dev --prefix frontend\""
-},
+   "scripts": {
+    "dev": "nodemon backend/server.js",
+    "start": "node backend/server.js",
+    "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend",
+    "dev:all": "concurrently \"npm run start\" \"npm run dev --prefix frontend\""
+  },
 "type": "module",
   "keywords": [],
   "author": "",
