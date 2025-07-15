@@ -1,20 +1,31 @@
 {
-  "name": "chatting-app",
+  "name": "backend",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "build": "npm install && npm install --prefix backend && npm install --prefix frontend && npm run build --prefix frontend",
-    "start": "npm run start --prefix backend",
+    "dev": "nodemon backend/server.js",
+    "start": "node backend/server.js",
+    "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend",
     "dev:all": "concurrently \"npm run start\" \"npm run dev --prefix frontend\""
   },
   "keywords": [],
   "author": "",
+  "type": "module",
   "license": "ISC",
   "description": "",
-  "engines": {
-  "node": "20.x"
-},
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "cloudinary": "^2.6.1",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.15.2",
+    "socket.io": "^4.8.1"
+  },
   "devDependencies": {
-    "concurrently": "^9.2.0"
+    "concurrently": "^9.2.0",
+    "nodemon": "^3.1.10"
   }
 }

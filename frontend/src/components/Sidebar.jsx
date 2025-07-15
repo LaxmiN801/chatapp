@@ -29,7 +29,6 @@ const Sidebar = () => {
     if (!socket) return;
 
     socket.on("sidebarUpdate", (updatedUser) => {
-      console.log("Sidebar update received:", updatedUser);
       updateUserInSidebar(updatedUser);
     });
 
