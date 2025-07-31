@@ -40,7 +40,17 @@ app.use((err, req, res, next) => {
 });
 
 
-server.listen(process.env.PORT || 5000, () => {
-  console.log("server is running on PORT:" + process.env.PORT);
-  connectDB();
-});
+// server.listen(process.env.PORT || 5000, () => {
+//   console.log("server is running on PORT:" + process.env.PORT);
+//   connectDB();
+// });
+
+connectDB()
+	.then(() => {
+		server.listen(process.env.PORT || 5000, () => {
+			console.log(`⚙️ Server is running at port : ${process.env.PORT}`);
+		})
+	})
+	.catch((err) => {
+		console.log(err);
+	})
