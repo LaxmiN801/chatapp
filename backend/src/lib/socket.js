@@ -6,9 +6,28 @@ import Message from "../models/message.model.js";
 const app = express();
 const server = http.createServer(app);
 
+// const io = new Server(server, {
+//   cors: {
+//     origin: [process.env.CORS_ORIGIN],
+//     credentials: true,
+//   },
+// });
+
+const allowedOrigins = [
+  process.env.CORS_ORIGIN,
+  "http://localhost:5173",
+];
+
 const io = new Server(server, {
   cors: {
-    origin: [process.env.CORS_ORIGIN],
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        console.log("❌ Socket blocked by CORS:", origin);
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     credentials: true,
   },
 });
